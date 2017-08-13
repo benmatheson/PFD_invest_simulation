@@ -1,0 +1,85 @@
+#main{
+  margin:auto;
+  text-align:center;
+  width: 80%;
+}
+
+
+
+#sub {
+    width: 70%;
+  margin:auto;
+
+}
+
+input {
+  padding: 2% 2% 2% 2%;
+  margin: 2% 2% 2% 2%;
+  font-size: 2rem;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+  background-color: #1b2330;
+  color:white;
+}
+
+input[type=submit]:hover {
+  background-color: #44484f;
+  
+  
+}
+
+h1, h2, h3 {
+    font-family: Montserrat;
+  font-weight:bold;
+
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: bold;
+}
+
+h3, h2 {
+  font-weight: lighter;
+  display: {{this.state.isVisible}}
+}
+p.graph {
+  font-family: Arial;
+    font-size: 1.3rem;
+  font-weight: 50;
+  width: 70%;
+  margin:auto;
+  padding-top: 2%;
+  text-align: left;
+}
+
+
+
+svg text{
+  
+  font-family: Arial;
+  color: red;
+}
+
+#high {
+  
+background-color: #f8fb32;
+  padding: 3px 4px 3px 4px;
+  border-radius:10px;
+}
+
+#para
+{
+  border-style: dotted;
+  border-color: lightgray;
+    padding: 10px 100px 25px 50px;
+  
+}
+
+/*
+https://www.sitepoint.com/work-with-forms-in-react/
+
+https://facebook.github.io/react/docs/forms.html
+
+/*
