@@ -23,6 +23,9 @@ class App extends React.Component {
   //event handler
   handleChange(event) {
     
+    
+    {{this.state.isVisible}}
+   
     var userInput = document.getElementById("inputForm").value;
 
 if (isNaN(userInput) || userInput < 1981 || userInput > 2016) {
@@ -194,8 +197,8 @@ alert('Please select a year between 1982 and 2016 in which you recieved your fir
 			yearsObjArray.push(yearsObj);
         
                 divRetSequence.yr=years[i];
-        divRetSequence.div = amounts[i];
-        divRetSequence.ret = 0;
+        divRetSequence.Dividend = amounts[i];
+        divRetSequence.Return = 0;
                divRetSequenceArray.push(divRetSequence);
         
       } 
@@ -209,8 +212,8 @@ alert('Please select a year between 1982 and 2016 in which you recieved your fir
         
         var  previousVal;
       divRetSequence = {};
-                divRetSequence.yr=years[i];
-        divRetSequence.div = amounts[i];
+       divRetSequence.yr=years[i];
+        divRetSequence.Dividend = amounts[i];
 
         
         //takes current total, subtracts this years dividend then subtrats previous  year's total.
@@ -222,7 +225,9 @@ alert('Please select a year between 1982 and 2016 in which you recieved your fir
            previousVal = valueSequence[valueSequence.length-2];    
        //the return for hte year is the current year total minus the years dividend munus the previous year's total
         
-        divRetSequence.ret = total-amounts[i]-(previousVal);
+        divRetSequence.Return = (total-amounts[i]-(previousVal)).toFixed(2);
+        
+        
    
         divRetSequenceArray.push(divRetSequence);
         
@@ -233,7 +238,7 @@ alert('Please select a year between 1982 and 2016 in which you recieved your fir
         yearsObj ={};
 			yearsObj.yr=years[i];
 
-			yearsObj.val = total;
+			yearsObj.val = parseFloat(total.toFixed(2));
 
 			yearsObjArray.push(yearsObj);
         
@@ -277,38 +282,40 @@ alert('Please select a year between 1982 and 2016 in which you recieved your fir
 
   render() {
     return (
-      <div id="main"><h1>What If You Had Invested Your PFD?</h1>
-        <h3 id="sub">Enter the first year you recieved a Permanent Fund Dividend (1982 on) to see what you would have earned by investing it in the stock market each year.</h3>
+      <div id="main"> <i className="animated  bounce bounceInDown fa fa-line-chart fa-5x" aria-hidden="false"></i><h1 className="animated fadeInDown" >What If You Had Invested Your PFD?</h1>
+        <h3 id="sub">Enter the first year you recieved an Alaska Permanent Fund Dividend (1982 on) to see what you would have earned by investing it in the stock market each year. </h3>
         <form onSubmit={this.handleChange}>
 
           <input placeholder="e.g. 1996" type="text" id="inputForm" ref="newYear" />
           <input type="submit" />
 
-         <div id="para" style={{display: this.state.isVisible}} > <p className="graph">
+         <div id="para" className="graph animated bounceInUp" style={{display: this.state.isVisible}} > <p className="graph animated bounceInUp">
 
-          Your account would have reached a
+         Your account would have reached a
             value of <span id="high"> <strong>$ {this.state.total.toLocaleString(undefined,{ minimumFractionDigits:2, maximumFractionDigits:2 })}</strong> </span>by 2017 if you had
             invested every dividend in an S&P 500
             index fund and left it alone for     
-           <span> {2017-this.state.yearState}</span> years.  <br /><br />You would have invested a total of
+           <span> {2017-this.state.yearState}</span> years.  <br /><br /> You would have invested a total of
             {" "}<strong><span id="high">$ {this.state.totalContributions.toLocaleString(undefined,{ minimumFractionDigits:2, maximumFractionDigits:2 })}</span></strong>,
            from your dividends, while your stock investments would have earned you
          <span id="high"><strong>$ {this.state.difference.toLocaleString(undefined,{ minimumFractionDigits:2, maximumFractionDigits:2 })}</strong></span>, accounting for <span id="high"><strong>{((this.state.difference/this.state.total)*100).toFixed(1)}</strong> </span>percent of your total balance.   </p>
            </div> <br />          
           
                   </form>
+        
+        <div id='result' style={{display: this.state.isVisible}}>
         <h2 style={{display: this.state.isVisible}}>How your money grew over the years</h2>
  <Graph className="chart" dataValue={this.state.yearsObjArray} ass={this.state.yearState} /> 
         
          <h2 style={{display: this.state.isVisible}}>How much did stock earnings contribute? </h2>
         <Cake  className="chart" differenceProp ={this.state.difference} totalProp ={this.state.totalContributions} />
         
-        <h3 style={{display: this.state.isVisible}}>The dividends amounted to only a portion of the final total.</h3>
+        <h3 style={{display: this.state.isVisible}}>The dividends amounted to only a portion of the final total. The longer you have held your money in the stock market, the more of your final account value comes from earnings related to company growth and regular dividends.</h3>
         <h2 style={{display: this.state.isVisible}}>Ups and downs along the way</h2>
 <BarReturn className="chart" divRetSequenceArray = {this.state.divRetSequenceArray} />
  
           <br />
-        
+       <p id="foot">Note: This analysis is simplified: it uses real, annual S&P 500 data, courtesy of NYU Professor Aswath Damodaran and includes dividends. It assumes that the dividend recipient invests the full dividend at year-end. There are no taxes or transaction or investment fees (Vanguard can get you this on in the range of .05% for a no-frills ETF) included.</p></div>
      </div>
     );
   }
@@ -358,13 +365,13 @@ class Cake extends React.Component{
     
     
     var pieDataObj1 = {};
-    pieDataObj1.name = "total";
+    pieDataObj1.name = "Dividends";
     pieDataObj1.value = parseFloat(dataTotal.toFixed(4));
     //RIGHT HERE:
     console.log("LOG"+pieDataObj1);
     
     var pieDataObj2 ={};
-    pieDataObj2.name = "difference";
+    pieDataObj2.name = "Investment Earnings";
     pieDataObj2.value = parseFloat(dataDiff.toFixed(2));
     pieData.push(pieDataObj1, pieDataObj2);
     console.log("STRINGING THE OBJ");
@@ -405,8 +412,8 @@ class BarReturn extends React.Component {
        <Legend />
 
           
-       <Bar dataKey="div" stackId="a" fill="#8884d8" />
-           <Bar dataKey="ret" stackId="b" fill="red" />
+       <Bar dataKey="Dividend" stackId="a" fill="#8884d8" />
+           <Bar dataKey="Return" stackId="b" fill="red" />
   
                        <ReferenceLine y={0} stroke='#000'/>
 
@@ -418,8 +425,6 @@ class BarReturn extends React.Component {
   
   
 }
-
-
 
 
 

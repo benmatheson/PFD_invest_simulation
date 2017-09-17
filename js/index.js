@@ -41,6 +41,12 @@ var App = function (_React$Component) {
 
   App.prototype.handleChange = function handleChange(event) {
 
+    {
+      {
+        this.state.isVisible;
+      }
+    }
+
     var userInput = document.getElementById("inputForm").value;
 
     if (isNaN(userInput) || userInput < 1981 || userInput > 2016) {
@@ -98,8 +104,8 @@ var App = function (_React$Component) {
           yearsObjArray.push(yearsObj);
 
           divRetSequence.yr = years[i];
-          divRetSequence.div = amounts[i];
-          divRetSequence.ret = 0;
+          divRetSequence.Dividend = amounts[i];
+          divRetSequence.Return = 0;
           divRetSequenceArray.push(divRetSequence);
         } else {
           total = total * (1 + performances[i]) + amounts[i];
@@ -109,7 +115,7 @@ var App = function (_React$Component) {
           var previousVal;
           divRetSequence = {};
           divRetSequence.yr = years[i];
-          divRetSequence.div = amounts[i];
+          divRetSequence.Dividend = amounts[i];
 
           //takes current total, subtracts this years dividend then subtrats previous  year's total.
 
@@ -120,7 +126,7 @@ var App = function (_React$Component) {
           previousVal = valueSequence[valueSequence.length - 2];
           //the return for hte year is the current year total minus the years dividend munus the previous year's total
 
-          divRetSequence.ret = total - amounts[i] - previousVal;
+          divRetSequence.Return = (total - amounts[i] - previousVal).toFixed(2);
 
           divRetSequenceArray.push(divRetSequence);
 
@@ -129,7 +135,7 @@ var App = function (_React$Component) {
           yearsObj = {};
           yearsObj.yr = years[i];
 
-          yearsObj.val = total;
+          yearsObj.val = parseFloat(total.toFixed(2));
 
           yearsObjArray.push(yearsObj);
         }
@@ -166,15 +172,17 @@ var App = function (_React$Component) {
     return React.createElement(
       "div",
       { id: "main" },
+      " ",
+      React.createElement("i", { className: "animated  bounce bounceInDown fa fa-line-chart fa-5x", "aria-hidden": "false" }),
       React.createElement(
         "h1",
-        null,
+        { className: "animated fadeInDown" },
         "What If You Had Invested Your PFD?"
       ),
       React.createElement(
         "h3",
         { id: "sub" },
-        "Enter the first year you recieved a Permanent Fund Dividend (1982 on) to see what you would have earned by investing it in the stock market each year."
+        "Enter the first year you recieved an Alaska Permanent Fund Dividend (1982 on) to see what you would have earned by investing it in the stock market each year. "
       ),
       React.createElement(
         "form",
@@ -183,11 +191,11 @@ var App = function (_React$Component) {
         React.createElement("input", { type: "submit" }),
         React.createElement(
           "div",
-          { id: "para", style: { display: this.state.isVisible } },
+          { id: "para", className: "graph animated bounceInUp", style: { display: this.state.isVisible } },
           " ",
           React.createElement(
             "p",
-            { className: "graph" },
+            { className: "graph animated bounceInUp" },
             "Your account would have reached a value of ",
             React.createElement(
               "span",
@@ -211,7 +219,7 @@ var App = function (_React$Component) {
             " years.  ",
             React.createElement("br", null),
             React.createElement("br", null),
-            "You would have invested a total of",
+            " You would have invested a total of",
             " ",
             React.createElement(
               "strong",
@@ -252,29 +260,38 @@ var App = function (_React$Component) {
         React.createElement("br", null)
       ),
       React.createElement(
-        "h2",
-        { style: { display: this.state.isVisible } },
-        "How your money grew over the years"
-      ),
-      React.createElement(Graph, { className: "chart", dataValue: this.state.yearsObjArray, ass: this.state.yearState }),
-      React.createElement(
-        "h2",
-        { style: { display: this.state.isVisible } },
-        "How much did stock earnings contribute? "
-      ),
-      React.createElement(Cake, { className: "chart", differenceProp: this.state.difference, totalProp: this.state.totalContributions }),
-      React.createElement(
-        "h3",
-        { style: { display: this.state.isVisible } },
-        "The dividends amounted to only a portion of the final total."
-      ),
-      React.createElement(
-        "h2",
-        { style: { display: this.state.isVisible } },
-        "Ups and downs along the way"
-      ),
-      React.createElement(BarReturn, { className: "chart", divRetSequenceArray: this.state.divRetSequenceArray }),
-      React.createElement("br", null)
+        "div",
+        { id: "result", style: { display: this.state.isVisible } },
+        React.createElement(
+          "h2",
+          { style: { display: this.state.isVisible } },
+          "How your money grew over the years"
+        ),
+        React.createElement(Graph, { className: "chart", dataValue: this.state.yearsObjArray, ass: this.state.yearState }),
+        React.createElement(
+          "h2",
+          { style: { display: this.state.isVisible } },
+          "How much did stock earnings contribute? "
+        ),
+        React.createElement(Cake, { className: "chart", differenceProp: this.state.difference, totalProp: this.state.totalContributions }),
+        React.createElement(
+          "h3",
+          { style: { display: this.state.isVisible } },
+          "The dividends amounted to only a portion of the final total. The longer you have held your money in the stock market, the more of your final account value comes from earnings related to company growth and regular dividends."
+        ),
+        React.createElement(
+          "h2",
+          { style: { display: this.state.isVisible } },
+          "Ups and downs along the way"
+        ),
+        React.createElement(BarReturn, { className: "chart", divRetSequenceArray: this.state.divRetSequenceArray }),
+        React.createElement("br", null),
+        React.createElement(
+          "p",
+          { id: "foot" },
+          "Note: This analysis is simplified: it uses real, annual S&P 500 data, courtesy of NYU Professor Aswath Damodaran and includes dividends. It assumes that the dividend recipient invests the full dividend at year-end. There are no taxes or transaction or investment fees (Vanguard can get you this on in the range of .05% for a no-frills ETF) included."
+        )
+      )
     );
   };
 
@@ -350,13 +367,13 @@ var Cake = function (_React$Component3) {
     //https://ftalphaville.ft.com/
 
     var pieDataObj1 = {};
-    pieDataObj1.name = "total";
+    pieDataObj1.name = "Dividends";
     pieDataObj1.value = parseFloat(dataTotal.toFixed(4));
     //RIGHT HERE:
     console.log("LOG" + pieDataObj1);
 
     var pieDataObj2 = {};
-    pieDataObj2.name = "difference";
+    pieDataObj2.name = "Investment Earnings";
     pieDataObj2.value = parseFloat(dataDiff.toFixed(2));
     pieData.push(pieDataObj1, pieDataObj2);
     console.log("STRINGING THE OBJ");
@@ -401,8 +418,8 @@ var BarReturn = function (_React$Component4) {
       React.createElement(CartesianGrid, { strokeDasharray: "3 3" }),
       React.createElement(Tooltip, null),
       React.createElement(Legend, null),
-      React.createElement(Bar, { dataKey: "div", stackId: "a", fill: "#8884d8" }),
-      React.createElement(Bar, { dataKey: "ret", stackId: "b", fill: "red" }),
+      React.createElement(Bar, { dataKey: "Dividend", stackId: "a", fill: "#8884d8" }),
+      React.createElement(Bar, { dataKey: "Return", stackId: "b", fill: "red" }),
       React.createElement(ReferenceLine, { y: 0, stroke: "#000" })
     );
   };
