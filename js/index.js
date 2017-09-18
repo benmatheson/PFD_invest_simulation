@@ -8,6 +8,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+//added the year to date info on 2017
+
 var App = function (_React$Component) {
   _inherits(App, _React$Component);
 
@@ -49,7 +51,7 @@ var App = function (_React$Component) {
 
     var userInput = document.getElementById("inputForm").value;
 
-    if (isNaN(userInput) || userInput < 1981 || userInput > 2016) {
+    if (isNaN(userInput) || userInput < 1981 || userInput > 2017) {
 
       alert('Please select a year between 1982 and 2016 in which you recieved your first PFD');
     } else {
@@ -66,9 +68,9 @@ var App = function (_React$Component) {
       var year = updatedYear;
 
       console.log("YEEEER" + year);
-      var performances = [0.2042, 0.2234, 0.0615, 0.3124, 0.1849, 0.0581, 0.1654, 0.3148, -0.0306, 0.3023, 0.0749, 0.0997, 0.0133, 0.372, 0.2268, 0.331, 0.2834, 0.2089, -0.0903, -0.1185, -0.2197, 0.2836, 0.1074, 0.0483, 0.1561, 0.0548, -0.3655, 0.2594, 0.1482, 0.021, 0.1589, 0.3215, 0.1352, 0.0138, 0.1174];
-      var years = [1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016];
-      var amounts = [1000, 386.15, 331.29, 404, 556.26, 708.19, 826.93, 873.16, 952.63, 931.34, 915.84, 949.46, 983.9, 990.3, 1130.68, 1296.54, 1540.88, 1769.84, 1963.86, 1850.28, 1540.76, 1107.56, 919.84, 845.76, 1106.96, 1654, 2069, 1305, 1281, 1174, 878, 900, 1884, 2072, 1022];
+      var performances = [0.2042, 0.2234, 0.0615, 0.3124, 0.1849, 0.0581, 0.1654, 0.3148, -0.0306, 0.3023, 0.0749, 0.0997, 0.0133, 0.372, 0.2268, 0.331, 0.2834, 0.2089, -0.0903, -0.1185, -0.2197, 0.2836, 0.1074, 0.0483, 0.1561, 0.0548, -0.3655, 0.2594, 0.1482, 0.021, 0.1589, 0.3215, 0.1352, 0.0138, 0.1174, 0.1168];
+      var years = [1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017];
+      var amounts = [1000, 386.15, 331.29, 404, 556.26, 708.19, 826.93, 873.16, 952.63, 931.34, 915.84, 949.46, 983.9, 990.3, 1130.68, 1296.54, 1540.88, 1769.84, 1963.86, 1850.28, 1540.76, 1107.56, 919.84, 845.76, 1106.96, 1654, 2069, 1305, 1281, 1174, 878, 900, 1884, 2072, 1022, 1100];
       var total;
 
       // the index of the year will match up with returns and PFD amounts for this final value calculation

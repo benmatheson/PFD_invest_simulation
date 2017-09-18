@@ -1,3 +1,5 @@
+//added the year to date info on 2017
+
 class App extends React.Component {
   //setting inital state
   constructor(props) {
@@ -28,7 +30,7 @@ class App extends React.Component {
    
     var userInput = document.getElementById("inputForm").value;
 
-if (isNaN(userInput) || userInput < 1981 || userInput > 2016) {
+if (isNaN(userInput) || userInput < 1981 || userInput > 2017) {
 
 alert('Please select a year between 1982 and 2016 in which you recieved your first PFD');
 
@@ -83,7 +85,8 @@ alert('Please select a year between 1982 and 2016 in which you recieved your fir
       0.3215,
       0.1352,
       0.0138,
-      0.1174
+      0.1174,
+      0.1168
     ];
     var years = [
       1982,
@@ -120,7 +123,7 @@ alert('Please select a year between 1982 and 2016 in which you recieved your fir
       2013,
       2014,
       2015,
-      2016
+      2016, 2017
     ];
     var amounts = [
       1000,
@@ -157,7 +160,8 @@ alert('Please select a year between 1982 and 2016 in which you recieved your fir
       900,
       1884,
       2072,
-      1022
+      1022, 
+      1100
     ];
     var total;
 
