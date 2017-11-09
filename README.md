@@ -42,6 +42,8 @@ The important bits are all tucked into a single handleClick function that takes 
         yearsArray.push(years[i]);
         
         ```
+	
+	
 The bottom line: you’d have nearly a quarter million dollars in the bank if you diligently invested each dividend since 1982.
 
 Note: This analysis is rather ballpark: it uses real, annual S&P 500 data, courtesy of NYU Professor Aswath Damodaran and includes dividends. It assumes that the dividend recipient invests the full dividend at year-end. There are no taxes or transaction or investment fees (Vanguard can get you this on in the range of .05% for a no-frills ETF) included.
