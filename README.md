@@ -40,8 +40,7 @@ The important bits are all tucked into a single handleClick function that takes 
         total = total * (1 + performances[i]) + amounts[i];
         valueSequence.push(total);
         yearsArray.push(years[i]);
-        
-        ```
+```
 	
 	
 The bottom line: you’d have nearly a quarter million dollars in the bank if you diligently invested each dividend since 1982.
