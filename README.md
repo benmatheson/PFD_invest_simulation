@@ -1,11 +1,11 @@
 
 Every October, the State of Alaska cuts a check to each man, woman, and child living in the state. The Permanent Fund Divided is: (depending who you ask)
 
-  *our share of the oil wealth on state lands
-  *an attempt to turn non-renewable resource (oil) to a renewable one (diversified global investments)
-  *universal basic income (Mark Zuckerberg)
-  *a check on the Alaska Legislature’s desire to spend and grow budgets.
-  *Payment for living in the state
+  * our share of the oil wealth on state lands
+  * an attempt to turn non-renewable resource (oil) to a renewable one (diversified global investments)
+  * universal basic income (Mark Zuckerberg)
+  * a check on the Alaska Legislature’s desire to spend and grow budgets.
+  * Payment for living in the state
 
 The checks are a portion of a five-year moving average of fund earnings. And as the bull market has roared back in the past half-decade, checks grew to $2,072.00 per person in 2015. By October, it is DARK in Alaska and winter is well on it’s way. A massive influx of a billion-plus in ($1,272,841,340in 2015) into Alaska’s small economy is well-anticipated.
 
